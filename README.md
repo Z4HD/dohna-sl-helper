@@ -16,9 +16,9 @@ An auto clicker driven by PyAutoGUI to load the first save of dohna:dohna.
 
 ## TODO
 
-[ ] 中文文档
-[ ] Multi-Language GUI
-[ ] Status indicator
+- [ ] 中文文档
+- [ ] Multi-Language GUI
+- [ ] Status indicator
 
 ## Install requirements
 
