@@ -1,7 +1,7 @@
 import logging
 import os.path
 import sys
-from time import sleep
+import time
 
 import pyautogui as pa
 
@@ -15,6 +15,9 @@ if getattr(sys, 'frozen', False):  # In PyInstaller binary
 else: # normal
     basedir = os.path.abspath('.')
 
+def sleep(secs:float):
+    logger.debug(f"Wait {secs} seconds...")
+    time.sleep(secs)
 
 def findGamePosition() -> pa.Point:
     """
@@ -71,9 +74,11 @@ class AutoActions():
         logger.info('END action: enterLoadSaveScreen')
 
     def loadFirstSaveData(self):
+        logger.info('Start action: loadFirstSaveData')
         self._clickRel(25, 175)
         sleep(7)
-        logger.info('Start action: loadFirstSaveData')
+        logger.info('END action: loadFirstSaveData')
+
 
     def enterSaleAction(self):
         "从游戏据点界面进入春销界面"
