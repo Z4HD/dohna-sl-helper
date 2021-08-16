@@ -11,13 +11,15 @@ pa.PAUSE = 0.5
 pa.FAILSAFE = True
 
 if getattr(sys, 'frozen', False):  # In PyInstaller binary
-    basedir = sys._MEIPASS # pylint: disable=no-member
-else: # normal
+    basedir = sys._MEIPASS  # pylint: disable=no-member
+else:  # normal
     basedir = os.path.abspath('.')
 
-def sleep(secs:float):
+
+def sleep(secs: float):
     logger.debug(f"Wait {secs} seconds...")
     time.sleep(secs)
+
 
 def findGamePosition() -> pa.Point:
     """
@@ -78,7 +80,6 @@ class AutoActions():
         self._clickRel(25, 175)
         sleep(7)
         logger.info('END action: loadFirstSaveData')
-
 
     def enterSaleAction(self):
         "从游戏据点界面进入春销界面"

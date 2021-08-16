@@ -136,7 +136,7 @@ class App(ttk.Frame):
 
 def intValidation(vstr: str) -> bool:
     "match a str is contain int"
-    if re.match("^\d*$", vstr):
+    if re.match("^\d*$", vstr): # pylint: disable=anomalous-backslash-in-string
         return True
     else:
         return False
