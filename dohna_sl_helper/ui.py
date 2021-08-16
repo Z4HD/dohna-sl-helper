@@ -71,14 +71,18 @@ class App(ttk.Frame):
                                  text="② Run SL!",
                                  command=self.runBtnCommand)
         self.runBtn.grid(row=2, column=0, padx=5, pady=5)
+        self.statusBar = ttk.Progressbar(self, mode='indeterminate', value=0)
+        self.statusBar.grid(row=2, column=0)
 
     def _disableBtns(self):
         self.findGameBtn.config(state='disabled')
         self.runBtn.config(state='disabled')
+        self.statusBar.start(5)
 
     def _enableBtns(self):
         self.findGameBtn.config(state='normal')
         self.runBtn.config(state='normal')
+        self.statusBar.stop()
 
     def findGamePositionCommand(self):
         self._disableBtns()
@@ -114,7 +118,10 @@ class App(ttk.Frame):
                 if self.enterSellBool.get():
                     ac.enterSaleAction()
         except FailSafeException:
-            msgbox.showerror('PyAutoGUI',"PyAutoGUI fail-safe triggered from mouse moving to a corner of the screen.\nAction stop.")
+            msgbox.showerror(
+                'PyAutoGUI',
+                "PyAutoGUI fail-safe triggered from mouse moving to a corner of the screen.\nAction stop."
+            )
         finally:
             self._enableBtns()
 
